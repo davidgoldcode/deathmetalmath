@@ -94,7 +94,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header classChange={classChange} />
       <Calculator
         results={results}
         clickHandler={clickHandler}

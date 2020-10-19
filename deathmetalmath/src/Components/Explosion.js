@@ -7,7 +7,7 @@ const Explosion = ({ classChange }) => {
       <img
         src={explosion}
         alt="video/mp4"
-        id={`${classChange ? "fireball" : "fireball-starter"}`}
+        id={`${classChange ? "fireball" : "preexplosion"}`}
       />
     </>
   );

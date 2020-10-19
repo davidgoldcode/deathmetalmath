@@ -18,7 +18,7 @@ body {
   height: 100vw;
   font-size: 62.5%;
   background-color: gray;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 * {
@@ -27,14 +27,29 @@ body {
 
 .header-container {
   display: flex;
-  margin: 0 auto;
   justify-content: center;
-  border: 1px solid orange;
-  font-size: 7vmin;
+  align-items: flex-start;
+  width: 100%;
+  height: 15%;
+  font-family: "black_nemesis_perosdemogrunge";
 }
 
-img {
+h1 {
+  font-size: 12vh;
+  margin: 0 auto;
+}
+
+#gif {
   position: fixed;
+  height: 33%;
+  top: 40%;
+  left: 50%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+
+#removeGif {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -42,9 +57,20 @@ img {
 
 audio {
   position: fixed;
-  top: 75%;
-  margin: 0 auto;
+  top: 90%;
+  left: 3%;
+  width: 25%;
   z-index: 1;
+}
+
+.full-calculator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 500px !important;
+  width: 300px !important;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
 }
 
 .calcResults {
@@ -64,62 +90,45 @@ audio {
 
 .calcButtons {
   width: 25%;
-  height: auto;
-}
-
-.MuiButton-label {
-  font-size: 4vmin;
 }
 
 .zero {
   width: 50%;
 }
 
-#full-calculator-container {
-  height: 50%;
-  width: 30%;
-  display: flex;
-  margin: 2% auto;
-  flex-wrap: wrap;
-  font-size: 4vmin;
-  display: none;
+.MuiButton-label,
+.calcResults {
+  font-size: 28px;
+  width: auto;
 }
 
+/* IDs for animation */
+
 #calc-animation {
-  height: 50%;
-  width: 30%;
-  display: flex;
-  margin: 2% auto;
-  flex-wrap: wrap;
-  font-size: 4vmin;
   animation: displayCalculator 0s 8.1s forwards;
   visibility: hidden;
 }
 
-#fireball-starter {
-  position: absolute;
-  top: 0;
-  left: 10%;
-  object-fit: contain;
+#preexplosion {
   display: none;
 }
 
 #fireball {
-  position: absolute;
-  top: 0;
-  left: 10%;
-  object-fit: contain;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
   visibility: hidden;
-  animation: displayExplosion 0s 8s forwards;
+  animation-name: displayExplosion, moveBehind;
+  animation-delay: 8s, 11s;
+  animation-duration: 3s;
+  z-index: 2;
 }
 
-.header-title {
-  font-family: "black_nemesis_perosdemogrunge";
-}
-
-/* .soundcloud-widget {
-  display: none;
-}*/
+/* animation keyframes */
 
 @keyframes displayCalculator {
   to {
@@ -131,5 +140,18 @@ audio {
 @keyframes displayExplosion {
   to {
     visibility: visible;
+  }
+}
+
+@keyframes moveBehind {
+  to {
+    z-index: -1000;
+  }
+}
+
+@keyframes removeGif {
+  to {
+    visibility: hidden;
+    display: none;
   }
 }
