@@ -1,16 +1,15 @@
 import React from "react";
 import Results from "./Results";
 import Keypad from "./Keypad";
-import ReactAudioPlayer from "react-audio-player";
-import Bodies from "../assets/audio/Bodies.mp3";
-import silence from "../assets/audio/silence.mp3";
 
-const Calculator = ({ results, clickHandler }) => {
+const Calculator = ({ results, clickHandler, classChange }) => {
   return (
-    <div className="full-calculator-container">
+    <div
+      className="full-calculator "
+      id={`${classChange ? "calc-animation" : "full-calculator-container"}`}
+    >
       <Results results={results} />
       <Keypad clickHandler={clickHandler} />
-      {/* <ReactAudioPlayer src={Bodies} autoPlay={true} controls /> */}
     </div>
   );
 };

@@ -4,6 +4,8 @@ import "./App.css";
 import Header from "./Components/Header";
 import Calculator from "./Components/Calculator";
 import Explosion from "./Components/Explosion";
+import ReactAudioPlayer from "react-audio-player";
+import Bodies from "./assets/audio/Bodies.mp3";
 import {
   hasConsecutiveOps,
   isOp,
@@ -18,7 +20,7 @@ import {
 function App() {
   const [results, setResults] = useState(0);
   const [clicked, setClicked] = useState(0);
-  console.log(results, "!!!!!!RESULTS");
+  const [classChange, setClassChange] = useState(false);
 
   useEffect(() => {
     setResults(clicked);
@@ -32,6 +34,11 @@ function App() {
 
   const reset = () => {
     setClicked(0);
+  };
+
+  const startMusic = (evt) => {
+    evt.preventDefault();
+    setClassChange(1);
   };
 
   const clickHandler = (evt) => {
@@ -88,8 +95,18 @@ function App() {
   return (
     <>
       <Header />
-      <Calculator results={results} clickHandler={clickHandler} />
-      {/* <Explosion /> */}
+      <Calculator
+        results={results}
+        clickHandler={clickHandler}
+        classChange={classChange}
+      />
+      <ReactAudioPlayer
+        src={Bodies}
+        autoPlay={false}
+        onPlay={startMusic}
+        controls
+      />
+      <Explosion classChange={classChange} />
     </>
   );
 }

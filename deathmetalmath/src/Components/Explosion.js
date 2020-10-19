@@ -1,10 +1,14 @@
 import React from "react";
 import explosion from "../assets/explosion.gif";
 
-const Explosion = () => {
+const Explosion = ({ classChange }) => {
   return (
     <>
-      <img src={explosion} alt="video/mp4" className="fireball" />
+      <img
+        src={explosion}
+        alt="video/mp4"
+        id={`${classChange ? "fireball" : "fireball-starter"}`}
+      />
     </>
   );
 };
