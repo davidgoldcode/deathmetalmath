@@ -10,6 +10,13 @@ const Header = ({ classChange }) => {
         alt="rocknroll gif"
         id={`${classChange ? "removeGif" : "gif"}`}
       />
+      <span
+        role="img"
+        aria-label="pointer to start music"
+        id={`${classChange ? "removeSpan" : "clickmespan"}`}
+      >
+        👇 click me
+      </span>
     </div>
   );
 };

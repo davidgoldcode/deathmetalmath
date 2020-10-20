@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 
 const Result = ({ results }) => {
   return (
-    <Card className="calcResults" variant="outlined">
+    <Card id="calcResults" variant="outlined">
       {results || 0}
     </Card>
   );

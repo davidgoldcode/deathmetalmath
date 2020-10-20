@@ -7,14 +7,12 @@ import Explosion from "./Components/Explosion";
 import ReactAudioPlayer from "react-audio-player";
 import Bodies from "./assets/audio/Bodies.mp3";
 import {
-  hasConsecutiveOps,
-  isOp,
-  isPercentage,
+  isMathOperator,
   startsWithZero,
   endsWithDot,
   hasDot,
-  endsWithOp,
   lastNumber,
+  sixDecimals,
 } from "./helpers/regex";
 
 function App() {
@@ -24,12 +22,13 @@ function App() {
 
   useEffect(() => {
     setResults(clicked);
-    // console.log(`%c Rock \n On \n 🤘🤘🤘 `, "color: red; font-size: 100px; ");
   }, [clicked]);
 
   const calculate = (math) => {
     const value = evaluate(math);
-    setClicked(Number(value));
+    sixDecimals.test(value)
+      ? setClicked(Number(value.toFixed(6)))
+      : setClicked(Number(value));
   };
 
   const reset = () => {
@@ -44,7 +43,6 @@ function App() {
   const clickHandler = (evt) => {
     evt.preventDefault();
     const { name, value } = evt.currentTarget;
-
     let button = String(clicked);
 
     switch (value) {
@@ -66,24 +64,20 @@ function App() {
           break;
         }
       case "%":
-        let addPercentage = button.match(lastNumber);
-        button = button.replace(lastNumber, (addPercentage / 100).toFixed(2));
+        let last = button.match(lastNumber);
+        button = button.replace(lastNumber, (last / 100).toFixed(2));
         setClicked(button);
         break;
       default:
-        if (isOp.test(value) && isOp.test(button)) {
-          setClicked(button.replace(isOp, value));
-          break;
-        } else if (!isOp.test(button) && startsWithZero.test(button)) {
-          console.log("here!!!");
-          setClicked(`${clicked === 0 ? "" : clicked}${value}`);
+        // test if the equation already ends with a math operator
+        if (isMathOperator.test(value) && isMathOperator.test(button)) {
+          setClicked(button.replace(isMathOperator, value));
           break;
         } else if (
-          isOp.test(value) &&
-          hasConsecutiveOps.test(String(results))
+          !isMathOperator.test(button) &&
+          startsWithZero.test(button)
         ) {
-          button = Number(button.replace(hasConsecutiveOps, value));
-          setClicked(button);
+          setClicked(`${clicked === 0 ? "" : clicked}${value}`);
           break;
         } else {
           setClicked(`${clicked}${value}`);
@@ -91,6 +85,8 @@ function App() {
         }
     }
   };
+
+  console.log(`%c Rock \n On \n 🤘🤘🤘 `, "color: red; font-size: 100px; ");
 
   return (
     <>
