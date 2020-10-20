@@ -5,11 +5,14 @@
     url("./assets/BlackNemesisPerosonalUSE-DEMO-Grunge.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  overflow: hidden;
 }
 
 #root {
   height: 100vh;
   height: 100vh;
+
+  --red: #f44336;
 }
 
 html,
@@ -17,12 +20,8 @@ body {
   width: 100vw;
   height: 100vw;
   font-size: 62.5%;
-  background-color: gray;
-  /* overflow: hidden; */
-}
-
-* {
-  border: 1px solid black;
+  background-color: rgb(40, 40, 40);
+  color: black;
 }
 
 .header-container {
@@ -32,11 +31,25 @@ body {
   width: 100%;
   height: 15%;
   font-family: "black_nemesis_perosdemogrunge";
+  color: var(--red);
 }
 
 h1 {
   font-size: 12vh;
   margin: 0 auto;
+}
+
+#clickmespan {
+  font-family: "black_nemesis_perosdemogrunge";
+  color: var(--red);
+  font-size: 36px;
+  position: fixed;
+  top: 85%;
+  left: 3%;
+}
+
+#removeSpan {
+  display: none;
 }
 
 #gif {
@@ -73,15 +86,17 @@ audio {
   height: 500px !important;
   width: 300px !important;
   transform: translate(-50%, -50%);
+  border: 2px solid var(--red);
   visibility: hidden;
 }
 
-.calcResults {
+#calcResults {
   background-color: transparent !important;
   width: 100%;
   height: 10%;
   padding-right: 5%;
   text-align: right;
+  color: var(--red);
 }
 
 .calculatorDiv {
@@ -100,7 +115,7 @@ audio {
 }
 
 .MuiButton-label,
-.calcResults {
+#calcResults {
   font-size: 28px;
   width: auto;
 }
@@ -129,6 +144,10 @@ audio {
   animation-delay: 8s, 11s;
   animation-duration: 3s;
   z-index: 2;
+}
+
+button.calcButtons {
+  color: black !important;
 }
 
 /* animation keyframes */
