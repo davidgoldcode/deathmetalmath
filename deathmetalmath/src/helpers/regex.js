@@ -18,3 +18,6 @@ export const endsWithOp = /[+/*-]$/;
 
 // need to change name
 export const startsWithOp = /[0-9]*\.*[0-9][+/*-]+[0-9]+\.{0}/;
+
+// check if number is greater than 6 decimals
+export const sixDecimals = /[0-9]+\.*[0-9]{6,}/;

@@ -12,6 +12,7 @@ import {
   endsWithDot,
   hasDot,
   lastNumber,
+  sixDecimals,
 } from "./helpers/regex";
 
 function App() {
@@ -25,7 +26,9 @@ function App() {
 
   const calculate = (math) => {
     const value = evaluate(math);
-    setClicked(Number(value));
+    sixDecimals.test(value)
+      ? setClicked(Number(value.toFixed(6)))
+      : setClicked(Number(value));
   };
 
   const reset = () => {
