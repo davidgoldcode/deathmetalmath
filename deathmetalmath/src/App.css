@@ -5,7 +5,6 @@
     url("./assets/BlackNemesisPerosonalUSE-DEMO-Grunge.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-  overflow: hidden;
 }
 
 #root {
@@ -22,6 +21,7 @@ body {
   font-size: 62.5%;
   background-color: rgb(40, 40, 40);
   color: black;
+  overflow: hidden;
 }
 
 .header-container {
@@ -45,7 +45,9 @@ h1 {
   font-size: 36px;
   position: fixed;
   top: 85%;
-  left: 3%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  animation: wobble 1s 2s 2 both;
 }
 
 #removeSpan {
@@ -73,9 +75,10 @@ h1 {
 
 audio {
   position: fixed;
-  top: 90%;
-  left: 3%;
-  width: 33%;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
   z-index: 1;
 }
 
@@ -174,5 +177,81 @@ button.calcButtons {
 @keyframes removeGif {
   to {
     visibility: hidden;
+  }
+}
+
+@-webkit-keyframes wobble {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+@keyframes wobble {
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  15% {
+    -webkit-transform: translateX(-30px) rotate(-6deg);
+    transform: translateX(-30px) rotate(-6deg);
+  }
+  30% {
+    -webkit-transform: translateX(15px) rotate(6deg);
+    transform: translateX(15px) rotate(6deg);
+  }
+  45% {
+    -webkit-transform: translateX(-15px) rotate(-3.6deg);
+    transform: translateX(-15px) rotate(-3.6deg);
+  }
+  60% {
+    -webkit-transform: translateX(9px) rotate(2.4deg);
+    transform: translateX(9px) rotate(2.4deg);
+  }
+  75% {
+    -webkit-transform: translateX(-6px) rotate(-1.2deg);
+    transform: translateX(-6px) rotate(-1.2deg);
+  }
+}
+
+/* media queries */
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 8vh;
+  }
+  audio {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  h1 {
+    font-size: 6vh;
   }
 }
